@@ -8,12 +8,12 @@
 		"layerFrame": {
 			"x": 767,
 			"y": 536,
-			"width": 274,
+			"width": 326,
 			"height": 44
 		},
 		"visible": true,
 		"metadata": {},
-		"backgroundColor": "rgba(21, 124, 252, 1)",
+		"backgroundColor": "rgba(239.53683035714286, 239.53683035714286, 239.53683035714286, 1)",
 		"children": [
 			{
 				"objectId": "4D14FBC1-064F-458E-801A-89A55128D259",
@@ -24,7 +24,7 @@
 				"layerFrame": {
 					"x": 20,
 					"y": 0,
-					"width": 240,
+					"width": 288,
 					"height": 44
 				},
 				"visible": true,
@@ -36,7 +36,7 @@
 					"frame": {
 						"x": 20,
 						"y": 0,
-						"width": 240,
+						"width": 288,
 						"height": 44
 					}
 				},
@@ -46,28 +46,74 @@
 				"objectId": "EFF9199B-CB4B-4AE1-81BD-D4F1690F8228",
 				"kind": "group",
 				"name": "loadingAssets",
-				"originalName": "loadingAssets*",
+				"originalName": "loadingAssets",
 				"maskFrame": null,
 				"layerFrame": {
-					"x": 29,
+					"x": 10,
 					"y": 0,
-					"width": 145,
+					"width": 164,
 					"height": 44
 				},
 				"visible": true,
 				"metadata": {
 					"opacity": 1
 				},
-				"image": {
-					"path": "images/Layer-loadingAssets-ruzgote5.png",
-					"frame": {
-						"x": 29,
-						"y": 0,
-						"width": 145,
-						"height": 44
+				"children": [
+					{
+						"objectId": "DE5FCEEA-13A0-42CD-B1E8-1AABBF2EB63F",
+						"kind": "group",
+						"name": "spinner",
+						"originalName": "spinner*",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 10,
+							"y": 10,
+							"width": 24,
+							"height": 24
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-spinner-reu1rknf.png",
+							"frame": {
+								"x": 10,
+								"y": 10,
+								"width": 24,
+								"height": 24
+							}
+						},
+						"children": []
+					},
+					{
+						"objectId": "084E3704-DE29-49FD-A816-7873EEF5E767",
+						"kind": "group",
+						"name": "otherstuff",
+						"originalName": "otherstuff*",
+						"maskFrame": null,
+						"layerFrame": {
+							"x": 42,
+							"y": 0,
+							"width": 132,
+							"height": 44
+						},
+						"visible": true,
+						"metadata": {
+							"opacity": 1
+						},
+						"image": {
+							"path": "images/Layer-otherstuff-mdg0rtm3.png",
+							"frame": {
+								"x": 42,
+								"y": 0,
+								"width": 132,
+								"height": 44
+							}
+						},
+						"children": []
 					}
-				},
-				"children": []
+				]
 			},
 			{
 				"objectId": "9E0F976C-0902-4CEF-BFC9-A96E094909CB",

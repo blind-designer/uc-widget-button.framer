@@ -1,3 +1,4 @@
+Material = require "material"
 # Import file "assets"
 sk = Framer.Importer.load("imported/assets@1x")
 # Use desktop cursor
@@ -8,7 +9,7 @@ Framer.Defaults.Animation =
 	curve: "ease"
 
 backgroundA = new BackgroundLayer
-	backgroundColor: "rgba(221,221,221,1)"
+	backgroundColor: "rgba(255,255,255,1)"
 
 button = new Layer
 	width: 190
@@ -39,14 +40,34 @@ sk.loadedAssets.states.add
 sk.loadingAssets.states.switchInstant("hidden")
 sk.loadedAssets.states.switchInstant("hidden")
 
+hoverbg1 = "rgba(255,255,255,.15)"
+hoverbg2 = "rgba(0,0,0,.05)"
+
+goodspinner = new Material.Spinner
+	size: 24
+	thickness: 11
+	color: "#ffffff"
+	changeColor: no
+
+goodspinner.parent = sk.loadingAssets
+goodspinner.x = sk.spinner.x
+goodspinner.y = sk.spinner.y
+
+
 firstAction = new Layer
 	x: 0
 	y: 0
 	width: button.width
 	height: button.height
 	superLayer: button
-	backgroundColor: "rgba(255,255,255,.15)"
+	backgroundColor: ""
 	opacity: 0
+
+firstActionBg = new Layer
+	parent: firstAction
+	width: firstAction.width
+	height: firstAction.height
+	backgroundColor: hoverbg1
 
 firstAction.states.add
 	hover:
@@ -55,11 +76,17 @@ firstAction.states.add
 fileAction = new Layer
 	x: 0
 	y: 0
-	width: 274 - 44
+	width: 326 - 95
 	height: button.height
 	superLayer: button
-	backgroundColor: "rgba(255,255,255,.15)"
+	backgroundColor: ""
 	opacity: 0
+
+fileActionBg = new Layer
+	parent: fileAction
+	width: fileAction.width
+	height: fileAction.height
+	backgroundColor: hoverbg1
 
 fileAction.states.add
 	hover:
@@ -82,8 +109,15 @@ cancelAction = new Layer
 	width: button.height
 	height: button.height
 	superLayer: cancelWrapper
-	backgroundColor: "rgba(255,255,255,.15)"
+	backgroundColor: ""
 	opacity: 0
+
+cancelActionBg = new Layer
+	parent: cancelAction
+	width: cancelAction.width
+	height: cancelAction.height
+	backgroundColor: hoverbg1
+
 
 cancelAction.states.add
 	hover:
@@ -98,7 +132,7 @@ progressBar = new Layer
 	height: 4 
 	superLayer: button
 	backgroundColor: "rgba(0,0,0,.15)"
-	opacity: 1
+	opacity: 0
 
 globalState = 0
 
@@ -117,13 +151,21 @@ progressBar.onAnimationEnd ->
 				opacity:0
 		sk.loadingAssets.states.next()
 		sk.loadedAssets.states.next()
+		goodspinner.stop()
 		button.animate
 			properties:
-				width: 274
+				width: 326
+				backgroundColor: "#F0F0F0"
 				#x: button.x - 42
-		cancelWrapper.x = 274 - 44
+		cancelWrapper.x = 326 - 95
 		globalState = 2
 		fileAction.visible = true
+		fileActionBg.backgroundColor = hoverbg2
+		cancelActionBg.backgroundColor = hoverbg2
+		cancelAction.width = 95
+		cancelAction.states.default.width = 95
+		cancelAction.states.hover.width = 95
+		cancelActionBg.width = 95
 
 firstAction.onClick ->
 	if globalState == 0
@@ -132,12 +174,19 @@ firstAction.onClick ->
 		globalState = 1
 		sk.firstAssets.states.next()
 		sk.loadingAssets.states.next()
-				
+		goodspinner.start()
+		
 		progressBar.animate
 			time: 2
 			curve: "linear"
 			properties:
 				x: 0
+		
+		sk.spinner.animate
+			time: 2
+			curve: "linear"
+			properties:
+				rotation: 560
 
 fileAction.onMouseOver ->
 	@.states.next()
@@ -150,4 +199,5 @@ cancelAction.onMouseOver ->
 
 cancelAction.onMouseOut ->
 	@.states.next()
+	
 
